@@ -23,7 +23,7 @@ function startTimer() {
   split.addEventListener('click', splitTimer);
   reset.addEventListener('click', resetTimer);
 
-  if (msec < 999) {
+  if (msec < 996) {
     msec = msec + 4;
   } else {
     msec = 0;
@@ -32,7 +32,7 @@ function startTimer() {
     } else {
       sec = 0;
       if (min < 60) {
-        min++
+        min++;
       } else {
         min = 0;
         hour++;
@@ -49,7 +49,7 @@ function startTimer() {
     } else {
       secSplit = 0;
       if (minSplit < 60) {
-        minSplit++
+        minSplit++;
       } else {
         minSplit = 0;
         hourSplit++;
@@ -81,12 +81,12 @@ function resetTimer() {
   start.addEventListener('click', startTimer);
   stop.style.display = 'none';
   start.style.display = 'inline-block';
-  timer.innerHTML = '00:00:00.000'
+  timer.innerHTML = '00:00:00.000';
   msec = 0;
   sec = 0;
   hour = 0;
   min = 0;
-  count = 0;
+  count = 1;
   msecSplit = 0;
   secSplit = 0;
   minSplit = 0;
@@ -106,7 +106,7 @@ function addSplit(marker) {
   if (msecSplit < 10) {
     msecSplit = '00' + msecSplit;
   } else if (msecSplit < 100) {
-    msecSplit = '0' + msecSplit
+    msecSplit = '0' + msecSplit;
   }
 
   if (secSplit < 10) {
@@ -121,7 +121,7 @@ function addSplit(marker) {
     hourSplit = '0' + hourSplit;
   }
 
-  div = document.createElement('div');
+  div = document.createElement('h3');
   div.className= 'splitChild';
   div.innerHTML = count + ': ' + marker + ' ' + hourSplit + ":" + minSplit + ":" + secSplit + "." + msecSplit;
   splitText.appendChild(div);
@@ -137,7 +137,7 @@ function outputTimer(hour, min, sec, msec) {
   if (msec < 10) {
     msec = '00' + msec;
   } else if (msec < 100) {
-    msec = '0' + msec
+    msec = '0' + msec;
   }
 
   if (sec < 10) {

@@ -1,21 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div id="timer">
-    00:00:00.000
-  </div>
-  <input type="button" id="startButton" value="start">
-  <input type="button" id="stopButton" value="stop">
-  <input type="button" id="splitButton" value="split">
-  <input type="button" id="resetButton" value="reset">
-  <div id="split">
-  </div>
-  <script src="js/script.js" charset="utf-8"></script>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timer</title>
 
-</body>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-push-3">
+          <h1 class="text-center text-danger" id="timer">00:00:00.000</h1>
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <button class="btn btn-lg btn-primary" type="button" name="button" id="startButton">Start</button>
+              <button class="btn btn-lg btn-warning"type="button" name="button" id="stopButton">Stop</button>
+              <button class="btn btn-lg btn-info"type="button" name="button" id="splitButton">Split</button>
+              <button class="btn btn-lg btn-danger"type="button" name="button" id="resetButton">Reset</button>
+            </div>
+            <div class="row text-center">
+              <div class="col-sm-12 text-info" id="split">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/script.js" charset="utf-8"></script>
+  </body>
 </html>
