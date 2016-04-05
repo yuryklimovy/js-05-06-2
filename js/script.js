@@ -82,7 +82,7 @@ function resetTimer() {
   start.addEventListener('click', startTimer);
   stop.style.display = 'none';
   start.style.display = 'inline-block';
-  timer.innerHTML = '00:00:00.000';
+  timerText.innerHTML = '00:00:00.000';
   timer.msec = 0;
   timer.sec = 0;
   timer.hour = 0;
