@@ -1,19 +1,22 @@
-var timer = document.getElementById('timer');
+var timerText = document.getElementById('timer');
 var start = document.getElementById('startButton');
 var stop = document.getElementById('stopButton');
 var split = document.getElementById('splitButton');
 var reset = document.getElementById('resetButton');
 var splitText = document.getElementById('split');
 
-var msec = 0;
-var sec = 0;
-var min = 0;
-var hour = 0;
-var msecSplit = 0;
-var secSplit = 0;
-var minSplit = 0;
-var hourSplit = 0;
-var count = 1;
+
+var timer = {
+  msec : 0,
+  sec : 0,
+  min : 0,
+  hour : 0,
+  msecSplit : 0,
+  secSplit : 0,
+  minSplit : 0,
+  hourSplit : 0,
+  count : 1
+};
 
 function startTimer() {
   stop.style.display = 'inline-block';
@@ -23,42 +26,40 @@ function startTimer() {
   split.addEventListener('click', splitTimer);
   reset.addEventListener('click', resetTimer);
 
-  if (msec < 996) {
-    msec = msec + 4;
+  if (timer.msec < 996) {
+    timer.msec = timer.msec + 4;
   } else {
-    msec = 0;
-    if (sec < 59) {
-      sec++;
+    timer.msec = 0;
+    if (timer.sec < 59) {
+      timer.sec++;
     } else {
-      sec = 0;
-      if (min < 60) {
-        min++;
+      timer.sec = 0;
+      if (timer.min < 60) {
+        timer.min++;
       } else {
-        min = 0;
-        hour++;
+        timer.min = 0;
+        timer.hour++;
       }
     }
   }
 
-  if (msecSplit < 999) {
-    msecSplit = msecSplit + 4;
+  if (timer.msecSplit < 999) {
+    timer.msecSplit = timer.msecSplit + 4;
   } else {
-    msecSplit = 0;
-    if (secSplit < 59) {
-      secSplit++;
+    timer.msecSplit = 0;
+    if (timer.secSplit < 59) {
+      timer.secSplit++;
     } else {
-      secSplit = 0;
-      if (minSplit < 60) {
-        minSplit++;
+      timer.secSplit = 0;
+      if (timer.minSplit < 60) {
+        timer.minSplit++;
       } else {
-        minSplit = 0;
-        hourSplit++;
+        timer.minSplit = 0;
+        timer.hourSplit++;
       }
     }
   }
-
-
-  outputTimer(hour, min, sec, msec);
+  outputTimer(timer.hour, timer.min, timer.sec, timer.msec);
   timerId = setTimeout(startTimer, 4);
 }
 
@@ -82,15 +83,15 @@ function resetTimer() {
   stop.style.display = 'none';
   start.style.display = 'inline-block';
   timer.innerHTML = '00:00:00.000';
-  msec = 0;
-  sec = 0;
-  hour = 0;
-  min = 0;
-  count = 1;
-  msecSplit = 0;
-  secSplit = 0;
-  minSplit = 0;
-  hourSplit = 0;
+  timer.msec = 0;
+  timer.sec = 0;
+  timer.hour = 0;
+  timer.min = 0;
+  timer.count = 1;
+  timer.msecSplit = 0;
+  timer.secSplit = 0;
+  timer.minSplit = 0;
+  timer.hourSplit = 0;
 
   var splitChild = document.getElementsByClassName('splitChild');
   for (var i = splitChild.length - 1 ; i >= 0; i--) {
@@ -103,33 +104,33 @@ function splitTimer(){
 }
 
 function addSplit(marker) {
-  if (msecSplit < 10) {
-    msecSplit = '00' + msecSplit;
-  } else if (msecSplit < 100) {
-    msecSplit = '0' + msecSplit;
+  if (timer.msecSplit < 10) {
+    timer.msecSplit = '00' + timer.msecSplit;
+  } else if (timer.msecSplit < 100) {
+    timer.msecSplit = '0' + timer.msecSplit;
   }
 
-  if (secSplit < 10) {
-    secSplit = '0' + secSplit;
+  if (timer.secSplit < 10) {
+    timer.secSplit = '0' + timer.secSplit;
   }
 
-  if (minSplit < 10) {
-    minSplit = '0' + minSplit;
+  if (timer.minSplit < 10) {
+    timer.minSplit = '0' + timer.minSplit;
   }
 
-  if (hourSplit < 10) {
-    hourSplit = '0' + hourSplit;
+  if (timer.hourSplit < 10) {
+    timer.hourSplit = '0' + timer.hourSplit;
   }
 
   div = document.createElement('h3');
   div.className= 'splitChild';
-  div.innerHTML = count + ': ' + marker + ' ' + hourSplit + ":" + minSplit + ":" + secSplit + "." + msecSplit;
+  div.innerHTML = timer.count + ': ' + marker + ' ' + timer.hourSplit + ":" + timer.minSplit + ":" + timer.secSplit + "." + timer.msecSplit;
   splitText.appendChild(div);
-  msecSplit = 0;
-  secSplit = 0;
-  minSplit = 0;
-  hourSplit = 0;
-  count++;
+  timer.msecSplit = 0;
+  timer.secSplit = 0;
+  timer.minSplit = 0;
+  timer.hourSplit = 0;
+  timer.count++;
 }
 
 
@@ -152,7 +153,7 @@ function outputTimer(hour, min, sec, msec) {
     hour = '0' + hour;
   }
 
-  timer.innerHTML = hour + ":" + min + ":" + sec + "." + msec;
+  timerText.innerHTML = hour + ":" + min + ":" + sec + "." + msec;
 }
 
 start.addEventListener('click', startTimer);
